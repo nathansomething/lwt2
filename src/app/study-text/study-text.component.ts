@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Document from '../document';
 
 @Component({
   selector: 'app-study-text',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudyTextComponent implements OnInit {
 
+  document:Document;
+
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }

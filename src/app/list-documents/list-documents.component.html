@@ -1,0 +1,24 @@
+<h2>Your Documents</h2>
+<table *ngIf="documents">
+  <tr>
+    <th>Name</th>
+    <th>Language</th>
+    <th>Date Created</th>
+    <th>Total # Words</th>
+    <!-- <th># Unkown Words</th>
+    <th># Recognized Words</th>
+    <th># Practicing Words</th>
+    <th># Learned Words</th> -->
+  </tr>
+  <tr *ngFor="let document of documents">
+    <td><a routerLink="studyText/${document.name}">{{document.name}}</a></td>
+    <td>{{getString(document.language)}}</td>
+    <td>{{document.createdOn | date}}</td>
+    <td>{{document.words.length}}</td>
+    <!-- <td>{{document.unknownWords.length}}</td>
+    <td>{{document.recognizedWords.length}}</td>
+    <td>{{document.practicingWords.length}}</td>
+    <td>{{document.learnedWords.length}}</td> -->
+  </tr>
+</table>
+<p *ngIf="!documents">There are no documents to dispaly.</p>

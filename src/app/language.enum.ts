@@ -1,4 +1,4 @@
-enum Language {
+export enum Language {
   English,
   Spanish,
   French,
