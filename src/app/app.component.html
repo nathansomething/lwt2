@@ -1,7 +1,17 @@
 <nav>
-  <a routerLink="documents/">Active Texts</a>
-  <a routerLink="documents/">Archieved Texts</a>
-  <a routerLink="words/">Words</a>
-  <a routerLink="upload/">Upload</a>
+  <img [src]="'./assets/lwt_icon_big.png'">
+  <div id="links">
+    <a routerLink="">Home</a>
+    <a routerLink="documents/">Active Texts</a>
+    <a routerLink="documents/">Archieved Texts</a>
+    <a routerLink="words/">Word List</a>
+    <a routerLink="upload/">Upload New Texts</a>
+  </div>
+  <div id="user">
+    <p>Welcome, {{username}}!</p>
+    <p>Not you? <a src="">Sign Out</a>
+  </div>
 </nav>
-<router-outlet></router-outlet>
+<div id="margins">
+  <router-outlet></router-outlet>
+</div>

@@ -2,6 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css?family=Lato');
 
+html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 body {
   font-family: 'Lato';
+  margin: 0;
+  padding: 0;
+  background-color: #EEE;
 }
