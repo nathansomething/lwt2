@@ -1,0 +1,26 @@
+form {
+
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+
+  select {
+    margin: 10px;
+  }
+
+
+  textarea {
+    width: 40vw;
+    height: 50vh;
+    resize: none;
+    margin: 10px;
+    font-size: 20px;
+  }
+
+  button {
+    display: block;
+    margin: 10px auto;
+  }
+}
