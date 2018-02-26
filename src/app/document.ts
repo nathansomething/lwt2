@@ -3,6 +3,7 @@ import Word from './word';
 import { DatePipe } from '@angular/common';
 
 export default class Document {
+  document_id:Number;
   name:String;
   language:Language;
   createdOn:any
@@ -12,10 +13,11 @@ export default class Document {
   practicingWords:Array<Word>;
   learnedWords:Array<Word>;
 
-  constructor(name:String, language:Language, words:Array<Word>) {
+  constructor(document_id:Number, name:String, language:Language, words:Array<Word>) {
+    this.document_id = document_id;
     this.name = name;
     this.language = language;
-    this.createdOn = Date.now()
+    this.createdOn = Date.now();
     this.words = words;
     this.unknownWords = [];
     this.recognizedWords = [];

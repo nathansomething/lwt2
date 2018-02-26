@@ -1,14 +1,14 @@
-<nav>
+<nav *ngIf="user">
   <img [src]="'./assets/lwt_icon_big.png'">
   <div id="links">
-    <a routerLink="">Home</a>
-    <a routerLink="documents/">Active Texts</a>
-    <a routerLink="documents/">Archieved Texts</a>
-    <a routerLink="words/">Word List</a>
-    <a routerLink="upload/">Upload New Texts</a>
+    <a routerLink="user/{{user.id}}">Home</a>
+    <a routerLink="user/{{user.id}}/documents/">Active Texts</a>
+    <a routerLink="user/{{user.id}}/documents/">Archieved Texts</a>
+    <a routerLink="user/{{user.id}}/words/">Word List</a>
+    <a routerLink="user/{{user.id}}/upload/">Upload New Texts</a>
   </div>
   <div id="user">
-    <p>Welcome, {{username}}!</p>
+    <p>Welcome, {{user.username}}!</p>
     <p>Not you? <a src="">Sign Out</a>
   </div>
 </nav>

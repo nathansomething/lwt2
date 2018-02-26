@@ -1,3 +1,6 @@
-<p>
-  list-words works!
-</p>
+<h2>Word List</h2>
+<div>
+  <div *ngFor="let language of user.languages">
+    <a>{{getString(language)}}</a>
+  </div>
+</div>

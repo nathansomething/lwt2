@@ -1,15 +1,21 @@
 import Word from './word';
+import Language from './language.enum';
 
 export default class User {
-  firstName:string;
-  lastName:string;
+  id:Number;
+  username:String
+  firstName:String;
+  lastName:String;
+  languages:Array<Language>;
   documents:Array<Document>;
   unknownWords:Array<Word>;
   recognizedWords:Array<Word>;
   practicingWords:Array<Word>;
   learnedWords:Array<Word>;
 
-  constructor(firstName, lastName) {
+  constructor(id, username, firstName, lastName) {
+    this.id = id;
+    this.username = username;
     this.firstName = firstName;
     this.lastName = lastName;
     this.unknownWords = [];

@@ -6,12 +6,15 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class DocumentService {
 
-  private documentUrl = "api/documents";
 
   constructor(private http:HttpClient) { }
 
-  getDocuments():Observable<Document[]> {
-    return this.http.get<Document[]>(this.documentUrl);
+  getDocuments(user_id:Number):Observable<Document[]> {
+    return this.http.get<Document[]>(`api/documents/?user_id=${user_id}`);
+  }
+
+  getDocumentById(user_id:Number, document_id:Number):Observable<Document> {
+    return this.http.get<Document>(`api/documents/?user_id=${user_id}&document_id=${document_id}`);
   }
 
 }

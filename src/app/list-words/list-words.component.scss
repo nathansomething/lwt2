@@ -1,0 +1,12 @@
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  div {
+    height: 200px;
+    width: 350px;
+    border: 1px solid #CCC;
+  }
+}

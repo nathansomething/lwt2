@@ -1,3 +1,24 @@
-<p>
-  study-text works!
-</p>
+<ng-container *ngIf="document">
+  <h2>Studing text <span class="bold">{{document.name}}</span></h2>
+  <div id="study-text">
+    <ng-container *ngFor="let word of document.words">
+      <span *ngIf="!word.isPunctuation; else punctuation" class="word" (click)="setWord(word)">{{word.text}}</span>
+      <ng-template #punctuation>
+        <span class="punctuation">{{word.text}}</span>
+      </ng-template>
+    </ng-container>
+  </div>
+  <div id="word-box">
+    <h3>Word Info</h3>
+    <span *ngIf="word">
+      <p>{{word.text}}</p>
+      <hr>
+      <p>{{getFamiliarity(word.familiarity)}}</p>
+      <hr>
+      <p>{{word.definition}}</p>
+    </span>
+    <span *ngIf="!word">
+      <p>Click on a word to get started</p>
+    </span>
+  </div>
+</ng-container>

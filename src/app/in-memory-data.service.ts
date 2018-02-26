@@ -1,23 +1,29 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import Language from './language.enum';
+import Familiarity from './familiarity.enum';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const words = [
-      { id: 0, name: "Hello", language: Language.English},
-      { id: 1, name: "this", language: Language.English},
-      { id: 2, name: "is", language: Language.English},
-      { id: 3, name: "a", language: Language.English},
-      { id: 4, name: "test", language: Language.English},
-      { id: 5, name: "another", language: Language.English},
-      { id: 6, name: "это", language: Language.Russian},
-      { id: 7, name: "тест", language: Language.Russian}
+      { id: 0, text: "Hello", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 1, text: "this", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 2, text: "is", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 3, text: "a", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 4, text: "test", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 5, text: "another", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 6, text: "это", language: Language.Russian, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 7, text: "тест", language: Language.Russian, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
+      { id: 8, text: ".", language: Language.English, familiarity: Familiarity.Ignored, isPunctuation: true},
+      { id: 9, text: ",", language: Language.English, familiarity: Familiarity.Ignored, isPunctuation: true}
     ];
     const documents = [
-      { id: 0, name: "Test", createdOn: Date.now(), language: Language.English, words: [0,1,2,3,4] },
-      { id: 1, name: "Another Test", createdOn: Date.now(), language: Language.English, words: [0,1,2,5,4]},
-      { id: 2, name: "тест", createdOn: Date.now(), language: Language.Russian, words: [6,7]}
+      { document_id: 0, user_id: 0, name: "Test", createdOn: Date.now(), language: Language.English, words: [words[0],words[9],words[1],words[2],words[3],words[4],words[8] ] },
+      { document_id: 1, user_id: 0, name: "Another Test", createdOn: Date.now(), language: Language.English, words: [words[0],words[9],words[1],words[2],words[5],words[4],words[8]]},
+      { document_id: 2, user_id: 0, name: "тест", createdOn: Date.now(), language: Language.Russian, words: [words[6],words[7],words[8]]}
+    ];
+    const users = [
+      { user_id: 0, username:"jshmoe", firstName:"Joe", lastName:"Shmoe", languages: [Language.English, Language.Russian], documents: documents}
     ]
-    return {words,documents};
+    return {words,documents,users};
   }
 }

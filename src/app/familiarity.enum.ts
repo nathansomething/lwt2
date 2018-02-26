@@ -1,5 +1,6 @@
 enum Familiarity {
-  New,
+  Ignored,
+  Unseen,
   Unkown,
   Recognize,
   Practicing,

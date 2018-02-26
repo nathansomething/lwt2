@@ -13,13 +13,14 @@ import { ListWordsComponent } from './list-words/list-words.component';
 import { InMemoryDataService } from './in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DocumentService } from './document.service';
+import { UserService } from './user.service';
 
 const appRoutes: Routes = [
-  { path: '', component: HomePageComponent },
-  { path: 'upload', component: UploadTextComponent },
-  { path: 'study/:name', component: StudyTextComponent },
-  { path: 'documents', component: ListDocumentsComponent },
-  { path: 'words', component: ListWordsComponent },
+  { path: 'user/:user_id', component: HomePageComponent },
+  { path: 'user/:user_id/upload', component: UploadTextComponent },
+  { path: 'user/:user_id/study/:document_id', component: StudyTextComponent },
+  { path: 'user/:user_id/documents', component: ListDocumentsComponent },
+  { path: 'user/:user_id/words', component: ListWordsComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -40,7 +41,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
-  providers: [DocumentService],
+  providers: [DocumentService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

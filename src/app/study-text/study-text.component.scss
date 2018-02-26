@@ -1,0 +1,40 @@
+div#study-text {
+  width: 40vw;
+  min-height: 40vh;
+  background-color: #FFF;
+  border: 1px solid #CCC;
+  padding: 15px;
+  font-size: 20px;
+  float: left;
+  word-spacing: 0;
+  text-align: left;
+
+  span.word {
+    cursor: pointer;
+  }
+
+  span.punctuation {
+    margin-left: -4px;
+  }
+}
+
+div#word-box {
+  width: 15vw;
+  height: 30vh;
+  background-color: #9bf79b;
+  float: right;
+  border: 1px solid #CCC;
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    margin: 10px;
+  }
+
+  hr {
+    background-color: #fff;
+    border-top: 1px dashed #8c8b8b;
+  }
+}
