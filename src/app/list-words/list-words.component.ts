@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import Language from '../language.enum';
-import { Router } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
-import { WordService } from '../word.service';
+import { Component, OnInit } from '@angular/core'
+import Language from '../language.enum'
+import { Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
+import { WordService } from '../word.service'
+import Word from '../word'
 
 @Component({
   selector: 'app-list-words',
@@ -11,18 +12,22 @@ import { WordService } from '../word.service';
 })
 export class ListWordsComponent implements OnInit {
 
-  userId:Number;
+  userId:Number
+  words:Array<Word>
 
-  constructor(private route:ActivatedRoute, private router:Router, private wordService:WordService) { }
+  constructor(private route:ActivatedRoute, private router:Router, private wordService:WordService) {
+    this.words = []
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.userId = +params.user_id;
+      this.userId = +params.user_id
+      this.wordService.getAll().subscribe(words => this.words = words)
     });
   }
 
   getString(language:Language) {
-    return Language[language];
+    return Language[language]
   }
 
 }

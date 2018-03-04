@@ -1,11 +1,14 @@
 <h2>Upload New Document</h2>
-<form #documentForm="ngForm" (ngSubmit)="uploadDocument()">
-  <input type="text" name="title" placeholder="Document Title" [(ngModel)]="title">
-  <select name="language" [(ngModel)]="language">
-    <option>English</option>
-    <option>Russian</option>
+<form #documentForm="ngForm" (ngSubmit)="uploadDocument()" *ngIf="!submitted">
+  <input type="text" name="title" placeholder="Document Title" required [(ngModel)]="title">
+  <select name="language" required [(ngModel)]="documentLanguage">
+    <option *ngFor="let key of keys" [value]="key">{{language[key]}}</option>
   </select>
-  <textarea name="content" placeholder="Enter Text Here..." [(ngModel)]="documentText"></textarea>
+  <textarea name="content" required placeholder="Enter Text Here..." [(ngModel)]="documentText"></textarea>
   <p>{{getWordCountStr()}}</p>
   <button type="submit">Upload New Document</button>
 </form>
+<div *ngIf="submitted">
+  <p>Document <span style="font-style: italic">{{title}}</span> has been successfully uploaded.</p>
+  <button (click)="submitted = false">Submit Another Document</button>
+</div>

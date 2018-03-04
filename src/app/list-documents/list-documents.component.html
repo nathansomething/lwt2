@@ -1,5 +1,5 @@
 <h2>Your Documents</h2>
-<table *ngIf="documents">
+<table *ngIf="documents.length;else noDocuments">
   <tr>
     <th>Name</th>
     <th>Language</th>
@@ -21,4 +21,13 @@
     <td>{{document.learnedWords.length}}</td> -->
   </tr>
 </table>
-<p *ngIf="!documents">There are no documents to dispaly.</p>
+<button (click)="deleteAll()">Delete All</button>
+<div *ngIf="isDeleted">
+  <p>All documents have been deleted</p>
+</div>
+<div *ngIf="!isDeleted && isDeleted != null">
+  <p>Delete Failed</p>
+</div>
+<ng-template #noDocuments>
+  <p>There are no documents to dispaly.</p>
+</ng-template>

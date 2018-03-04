@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import DocumentForm from '../document-form';
+import { Component, OnInit } from '@angular/core'
+import { DocumentService } from '../document.service'
+import Language from '../language.enum'
+import Document from '../document'
+import Word from '../word'
 
 @Component({
   selector: 'app-upload-text',
@@ -8,19 +11,22 @@ import DocumentForm from '../document-form';
 })
 export class UploadTextComponent implements OnInit {
 
-  title:String;
-  language:String;
-  documentText:String;
+  title:string
+  language = Language
+  documentLanguage:Language
+  documentText:string
+  submitted:boolean
+  keys:any[]
 
-  constructor() {
+  constructor(private documentService:DocumentService) {
     this.title = ""
-    this.language = ""
+    this.documentLanguage = null
     this.documentText = ""
+    this.submitted = false
+    this.keys = Object.keys(this.language).filter(Number)
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   parseText() {
     if (this.documentText == "") {
@@ -29,7 +35,26 @@ export class UploadTextComponent implements OnInit {
     return this.documentText.trim().split(" ");
   }
 
-  getWordCountStr() {
+  isPunctuation(text:string) {
+    if (text == ".") {
+      return true
+    }
+    return false
+  }
+
+  getWords():Array<Word> {
+    let texts = this.parseText()
+    let words = new Array<Word>()
+    for (let text of texts) {
+      if (text == "") {
+        continue
+      }
+      words.push(new Word(text,"",this.documentLanguage,this.isPunctuation(text)))
+    }
+    return words
+  }
+
+  getWordCountStr():string {
     let wordCount:number = this.parseText().length
     if (wordCount != 1) {
       return `${wordCount} Words`
@@ -37,10 +62,25 @@ export class UploadTextComponent implements OnInit {
     return "1 Word"
   }
 
-  uploadDocument() {
-    console.log(this.title);
-    console.log(this.language);
-    console.log(this.documentText);
+  uploadDocument():void {
+    if (this.title != "" && this.documentLanguage != null && this.documentText != "") {
+      let documentToUpload = new Document(this.title,this.documentLanguage,this.getWords())
+      this.documentService.upload(documentToUpload).subscribe(res => {
+        if (res['response'] == "SUCCESS") {
+          this.submitted = true
+        }
+        else {
+          this.submitted = false
+        }
+      })
+    }
+    else {
+      alert("Error: Must Complete All Required Fields")
+    }
+  }
+
+  delete():void {
+    this.documentService.deleteAll()
   }
 
 }

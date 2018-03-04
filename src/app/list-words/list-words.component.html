@@ -1,6 +1,20 @@
 <h2>Word List</h2>
-<div>
-  <div *ngFor="let language of user.languages">
+<p>{{words}}</p>
+<div *ngIf="words.length">
+  <!-- <div *ngFor="let language of user.languages">
     <a>{{getString(language)}}</a>
-  </div>
+  </div> -->
+  <table>
+    <tr>
+      <th>Word</th>
+      <th>Definition</th>
+    </tr>
+    <tr *ngFor="let word of words">
+      <td>{{word.text}}</td>
+      <td>{{word.translation}}</td>
+    </tr>
+  </table>
+</div>
+<div *ngIf="!words.length">
+  <p>There are no words to display</p>
 </div>

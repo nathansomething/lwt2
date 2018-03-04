@@ -13,12 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ListDocumentsComponent implements OnInit {
 
-  public documents:Array<Document> = [];
-  public language:Language;
-  private userId:Number;
+  public documents:Array<Document> = []
+  public language:Language
+  private userId:Number
+  private isDeleted:boolean
 
   constructor(private route:ActivatedRoute, private router:Router, private documentService:DocumentService) {
-
+    this.isDeleted = null
   }
 
   getString(language:Language) {
@@ -28,14 +29,27 @@ export class ListDocumentsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = +params.user_id;
-      this.documentService.getDocuments(this.userId).subscribe(documents => {
-        this.documents = documents;
-      });
-    });
+      this.documentService.getAll().subscribe(documents => {
+        this.documents = documents
+      })
+    })
   }
 
   study(document_id:Number) {
     this.router.navigate([`/user/${this.userId}/study/${document_id}`]);
+  }
+
+  deleteAll() {
+    this.documentService.deleteAll().subscribe(res => {
+      if (res['response'] == "SUCCESS") {
+        this.isDeleted = true
+        this.documentService.getAll().subscribe(documents => this.documents = documents)
+      }
+      else {
+        this.isDeleted = false
+      }
+    })
+    return false
   }
 
 }

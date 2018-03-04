@@ -22,7 +22,7 @@ export class StudyTextComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.documentService.getDocumentById(+params['user_id'], +params['document_id']).subscribe(document => {
+      this.documentService.getById(+params['document_id']).subscribe(document => {
         console.log(document);
         this.document = document[0];
       });

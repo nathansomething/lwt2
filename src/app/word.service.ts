@@ -6,15 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class WordService {
 
-  private wordUrl = "api/word";
+  private baseUrl:string = "http://localhost:5000/documents"
 
   constructor(private http:HttpClient) { }
 
-  // getWords(user_id:Number):Observable<Word> {
-  //   return this.http.get<Word[]>("api/")
-  // }
-
-  getWordById(id:Number):Observable<Word> {
-    return this.http.get<Word>(`${this.wordUrl}/?user_id=${id}`);
+  getAll():Observable<Word[]> {
+    return this.http.get<Word[]>(this.baseUrl)
   }
 }

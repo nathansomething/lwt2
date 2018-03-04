@@ -12,11 +12,9 @@ export class AppComponent implements OnInit {
 
   user:User;
 
-  constructor(private userService:UserService) { }
-
-  ngOnInit() {
-    this.userService.getUserById(0).subscribe(user => {
-      this.user = user[0];
-    });
+  constructor() {
+    this.user = new User(0, "jshmoe", "Joe", "Shmoe")
   }
+
+  ngOnInit() { }
 }
