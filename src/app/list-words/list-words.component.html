@@ -1,5 +1,4 @@
 <h2>Word List</h2>
-<p>{{words}}</p>
 <div *ngIf="words.length">
   <!-- <div *ngFor="let language of user.languages">
     <a>{{getString(language)}}</a>
@@ -15,6 +14,7 @@
     </tr>
   </table>
 </div>
+<button (click)="deleteAll()">Delete All Words</button>
 <div *ngIf="!words.length">
   <p>There are no words to display</p>
 </div>

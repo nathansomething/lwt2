@@ -17,11 +17,11 @@ class Documents(Resource):
         if not document_id:
             cursor = mongo.db.documents.find({})
             for document in cursor:
-                document["document_id"] = str(document.pop("_id"))
+                document["documentId"] = str(document.pop("_id"))
                 document_data.append(document)
         else:
             document_data = mongo.db.documents.find_one({"name":"Testing"})
-            document_data["document_id"] = str(document_data.pop("_id"))
+            document_data["documentId"] = str(document_data.pop("_id"))
 
         return jsonify(document_data)
 
@@ -60,7 +60,7 @@ class Documents(Resource):
         return jsonify({"response":"SUCCESS"})
 
 class Words(Resource):
-    
+
     def get(self, word_ids=None):
         word_data = []
         cursor = None
@@ -73,8 +73,7 @@ class Words(Resource):
         else:
             cursor = mongo.db.words.find({})
         for word in cursor:
-            print(word)
-            word["word_id"] = str(word.pop("_id"))
+            word["wordId"] = str(word.pop("_id"))
             word_data.append(word)
         print(word_data)
         return jsonify(word_data)

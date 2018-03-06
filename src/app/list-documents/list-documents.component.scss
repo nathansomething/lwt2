@@ -1,39 +1,3 @@
 h2 {
   text-align: center;
 }
-
-table {
-  border: 1px solid #999;
-  border-collapse: collapse;
-  border-radius: 15px;
-  padding: 15px;
-  margin: 15px;
-
-  tr {
-    background-color: #FFF;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #5be95b;
-    }
-
-    &:nth-child(odd) {
-      background-color: #CCC;
-
-      &:hover {
-        background-color: #5be95b;
-      }
-    }
-  }
-
-  th {
-    background-color: #5757d9;
-    color: #FFF;
-    border: 1px solid #5757d9;
-  }
-
-  th, td {
-    padding: 10px;
-    text-align: center;
-  }
-}

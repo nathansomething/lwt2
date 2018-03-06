@@ -22,8 +22,19 @@ export class ListWordsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = +params.user_id
-      this.wordService.getAll().subscribe(words => this.words = words)
+      this.wordService.getAll().subscribe(words => {
+        this.words = words
+      })
     });
+  }
+
+  deleteAll() {
+    this.wordService.deleteAll().subscribe(res => {
+      if (res["response"] == "SUCCSESS") {
+        console.log("All words have been deleted")
+        this.wordService.getAll().subscribe(words => this.words = words)
+      }
+    })
   }
 
   getString(language:Language) {

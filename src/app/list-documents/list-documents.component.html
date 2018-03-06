@@ -10,7 +10,7 @@
     <th># Practicing Words</th>
     <th># Learned Words</th> -->
   </tr>
-  <tr *ngFor="let document of documents" (click)="study(document.document_id)">
+  <tr *ngFor="let document of documents" (click)="study(document.documentId)">
     <td [style.fontWeight]="'bold'">{{document.name}}</td>
     <td>{{getString(document.language)}}</td>
     <td>{{document.createdOn | date}}</td>
