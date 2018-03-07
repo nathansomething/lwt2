@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import Language from '../language.enum'
 import { Router } from '@angular/router'
 import { ActivatedRoute } from '@angular/router'
-import { WordService } from '../word.service'
-import Word from '../word'
+import { WordService } from '../services/word.service'
+import Word from '../services/word'
+import Language from '../enums/language.enum'
 
 @Component({
   selector: 'app-list-words',

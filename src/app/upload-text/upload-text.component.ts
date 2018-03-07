@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { DocumentService } from '../document.service'
-import Language from '../language.enum'
-import Document from '../document'
-import Word from '../word'
+import { DocumentService } from '../services/document.service'
+import { WordService } from '../services/word.service'
+import Language from '../enums/language.enum'
+import Document from '../services/document'
+import Word from '../services/word'
 
 @Component({
   selector: 'app-upload-text',
@@ -18,7 +19,7 @@ export class UploadTextComponent implements OnInit {
   submitted:boolean
   keys:any[]
 
-  constructor(private documentService:DocumentService) {
+  constructor(private documentService:DocumentService, private wordService:WordService) {
     this.title = ""
     this.documentLanguage = null
     this.documentText = ""
@@ -35,27 +36,32 @@ export class UploadTextComponent implements OnInit {
     return this.documentText.trim().split(" ");
   }
 
-  isPunctuation(text:string) {
-    if (text == ".") {
-      return true
-    }
-    return false
-  }
-
-  getWords():Array<Word> {
+  parseWordsFromDocumentText():Array<Word> {
     let texts = this.parseText()
     let words = new Array<Word>()
     for (let text of texts) {
       if (text == "") {
         continue
       }
-      words.push(new Word(text,"",this.documentLanguage,this.isPunctuation(text)))
+      let finalCharacter = text.charAt(text.length - 1)
+      if (finalCharacter == '.' || finalCharacter == '?' || finalCharacter == '!') {
+        words.push(new Word(text.split(finalCharacter)[0],"",this.documentLanguage,false))
+        words.push(new Word(finalCharacter,"",this.documentLanguage,true))
+      }
+      else {
+        words.push(new Word(text,"",this.documentLanguage,false))
+      }
     }
     return words
   }
 
+  getWordCount():number {
+    return this.parseWordsFromDocumentText().filter(
+      word => word.isPunctuation == false).length
+  }
+
   getWordCountStr():string {
-    let wordCount:number = this.parseText().length
+    let wordCount:number = this.getWordCount()
     if (wordCount != 1) {
       return `${wordCount} Words`
     }
@@ -64,14 +70,23 @@ export class UploadTextComponent implements OnInit {
 
   uploadDocument():void {
     if (this.title != "" && this.documentLanguage != null && this.documentText != "") {
-      let documentToUpload = new Document(this.title,this.documentLanguage,this.getWords())
-      this.documentService.upload(documentToUpload).subscribe(res => {
-        if (res['response'] == "SUCCESS") {
-          this.submitted = true
-        }
-        else {
-          this.submitted = false
-        }
+      let documentWords = this.parseWordsFromDocumentText()
+      this.wordService.addWords(documentWords).subscribe(wordIds => {
+        let documentToUpload = new Document(
+          this.title,
+          this.documentLanguage,
+          wordIds,
+          this.getWordCount()
+        )
+        console.log(documentToUpload)
+        this.documentService.upload(documentToUpload).subscribe(res => {
+          if (res['response'] == "SUCCESS") {
+            this.submitted = true
+          }
+          else {
+            this.submitted = false
+          }
+        })
       })
     }
     else {

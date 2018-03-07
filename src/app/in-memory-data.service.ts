@@ -1,6 +1,6 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import Language from './language.enum';
-import Familiarity from './familiarity.enum';
+import Language from './enums/language.enum';
+import Familiarity from './enums/familiarity.enum';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {

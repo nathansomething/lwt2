@@ -8,13 +8,13 @@ import { HomePageComponent } from './home-page/home-page.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 import { StudyTextComponent } from './study-text/study-text.component'
 import { UploadTextComponent } from './upload-text/upload-text.component'
-import { ListDocumentsComponent } from './list-documents/list-documents.component';
-import { ListWordsComponent } from './list-words/list-words.component';
-import { InMemoryDataService } from './in-memory-data.service';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { DocumentService } from './document.service';
-import { UserService } from './user.service';
-import { WordService } from './word.service'
+import { ListDocumentsComponent } from './list-documents/list-documents.component'
+import { ListWordsComponent } from './list-words/list-words.component'
+import { InMemoryDataService } from './in-memory-data.service'
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
+import { DocumentService } from './services/document.service'
+import { UserService } from './services/user.service'
+import { WordService } from './services/word.service'
 
 const appRoutes: Routes = [
   { path: 'user/:user_id', component: HomePageComponent },

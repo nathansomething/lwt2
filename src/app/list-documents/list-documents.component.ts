@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import Language from '../language.enum';
-import Word from '../word';
-import Document from '../document';
-import { DocumentService } from '../document.service';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import Language from '../enums/language.enum';
+import Word from '../services/word';
+import Document from '../services/document';
+import { DocumentService } from '../services/document.service';
 
 @Component({
   selector: 'app-list-documents',
@@ -18,9 +17,7 @@ export class ListDocumentsComponent implements OnInit {
   private userId:Number
   private isDeleted:boolean
 
-  constructor(private route:ActivatedRoute, private router:Router, private documentService:DocumentService) {
-    this.isDeleted = null
-  }
+  constructor(private route:ActivatedRoute, private router:Router, private documentService:DocumentService) { }
 
   getString(language:Language) {
     return Language[language];
@@ -29,9 +26,7 @@ export class ListDocumentsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.userId = +params.user_id;
-      this.documentService.getAll().subscribe(documents => {
-        this.documents = documents
-      })
+      this.documentService.getAll().subscribe(documents => this.documents = documents)
     })
   }
 
@@ -49,7 +44,6 @@ export class ListDocumentsComponent implements OnInit {
         this.isDeleted = false
       }
     })
-    return false
   }
 
 }
