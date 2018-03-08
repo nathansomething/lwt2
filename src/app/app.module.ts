@@ -14,7 +14,8 @@ import { InMemoryDataService } from './in-memory-data.service'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { DocumentService } from './services/document.service'
 import { UserService } from './services/user.service'
-import { WordService } from './services/word.service'
+import { WordService } from './services/word.service';
+import { WordInfoBoxComponent } from './word-info-box/word-info-box.component'
 
 const appRoutes: Routes = [
   { path: 'user/:user_id', component: HomePageComponent },
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
     StudyTextComponent,
     PageNotFoundComponent,
     ListDocumentsComponent,
-    ListWordsComponent
+    ListWordsComponent,
+    WordInfoBoxComponent
   ],
   imports: [
     BrowserModule,

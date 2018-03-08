@@ -5,10 +5,6 @@
     <th>Language</th>
     <th>Date Created</th>
     <th>Total # Words</th>
-    <!-- <th># Unkown Words</th>
-    <th># Recognized Words</th>
-    <th># Practicing Words</th>
-    <th># Learned Words</th> -->
   </tr>
   <tr *ngFor="let document of documents" (click)="study(document.documentId)">
     <td [style.fontWeight]="'bold'">{{document.name}}</td>

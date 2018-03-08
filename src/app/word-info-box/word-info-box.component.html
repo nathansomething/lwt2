@@ -1,0 +1,13 @@
+<div id="word-box">
+  <h3>Word Info</h3>
+  <span *ngIf="localFocusWord">
+    <p>{{localFocusWord.text}}</p>
+    <hr>
+    <p>{{getFamiliarity(localFocusWord.familiarity)}}</p>
+    <hr>
+    <p>{{localFocusWord.translation}}</p>
+  </span>
+  <span *ngIf="!localFocusWord">
+    <p>Click on a word to get started</p>
+  </span>
+</div>
