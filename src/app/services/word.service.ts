@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import Word from './word';
+import WordDisplay from './word-display'
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -18,8 +19,8 @@ export class WordService {
     return this.http.get<Word[]>(`${this.baseUrl}/${wordIds}`)
   }
 
-  addWords(words:Array<Word>):Observable<string[]> {
-    return this.http.post<string[]>(this.baseUrl, words);
+  addWords(words:Array<Word>):Observable<WordDisplay[]> {
+    return this.http.post<WordDisplay[]>(this.baseUrl, words);
   }
 
   deleteAll() {

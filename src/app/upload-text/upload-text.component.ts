@@ -3,6 +3,7 @@ import { DocumentService } from '../services/document.service'
 import { WordService } from '../services/word.service'
 import Language from '../enums/language.enum'
 import Document from '../services/document'
+import WordDisplay from '../services/word-display'
 import Word from '../services/word'
 
 @Component({
@@ -68,14 +69,18 @@ export class UploadTextComponent implements OnInit {
     return "1 Word"
   }
 
+  isUploadVaild():boolean {
+    return this.title != "" && this.documentLanguage != null && this.documentText != ""
+  }
+
   uploadDocument():void {
-    if (this.title != "" && this.documentLanguage != null && this.documentText != "") {
+    if (this.isUploadVaild()) {
       let documentWords = this.parseWordsFromDocumentText()
-      this.wordService.addWords(documentWords).subscribe(wordIds => {
+      this.wordService.addWords(documentWords).subscribe(wordDisplays => {
         let documentToUpload = new Document(
           this.title,
           this.documentLanguage,
-          wordIds,
+          wordDisplays,
           this.getWordCount()
         )
         console.log(documentToUpload)

@@ -1,8 +1,8 @@
 <ng-container *ngIf="activeDocument">
   <h2>Studing Text <span class="bold">{{activeDocument.name}}</span></h2>
-  <div id="study-text" *ngIf="activeDocument.orderedWordIds.length">
-    <ng-container *ngFor="let documentWord of documentWords">
-      <span [ngClass]="{'word':!documentWord.isPunctuation,'punctuation':documentWord.isPunctuation}" (click)="setWord(documentWord)">{{documentWord.text}}</span>
+  <div id="study-text" *ngIf="activeDocument.wordDisplays.length">
+    <ng-container *ngFor="let wordDisplay of activeDocument.wordDisplays">
+      <span [ngClass]="getWordClasses(wordDisplay.wordId)" (click)="setWord(wordDisplay.wordId)">{{wordDisplay.displayText}}</span>
     </ng-container>
   </div>
   <word-info-box [focusWord]="focusWord"></word-info-box>

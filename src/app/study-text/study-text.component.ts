@@ -14,23 +14,37 @@ import { WordService } from '../services/word.service'
 export class StudyTextComponent implements OnInit {
 
   private activeDocument:Document
-  private documentWords:Array<Word>
+  private wordIdMap:Map<string,Word>
   private focusWord:Word
 
-  constructor(private route:ActivatedRoute, private documentService:DocumentService, private wordService:WordService) { }
+  constructor(private route:ActivatedRoute, private documentService:DocumentService, private wordService:WordService) {
+    this.wordIdMap = new Map<string,Word>()
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.documentService.getById(params['document_id']).subscribe(document => {
         this.wordService.getSelection(document.uniqueWordIds).subscribe(words => {
-          this.documentWords = words
+          for (let word of words) {
+            this.wordIdMap.set(word.wordId, word)
+          }
           this.activeDocument = document
         })
       })
     })
   }
 
-  setWord(word:Word) {
+  getWord(wordId:string):Word {
+    return this.wordIdMap.get(wordId)
+  }
+
+  getWordClasses(wordId:string) {
+    let word:Word = this.getWord(wordId)
+    return {'word':!word.isPunctuation,'punctuation':word.isPunctuation}
+  }
+
+  setWord(wordId:string) {
+    let word:Word = this.getWord(wordId)
     if (!word.isPunctuation && word.familiarity != Familiarity.Ignored) {
       this.focusWord = word
     }

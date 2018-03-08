@@ -33,10 +33,10 @@ class Documents(Resource):
             mongo.db.documents.insert({
                 "name": data['name'],
                 "language": data['language'],
-                "createdOn": data['createdOn'],
-                "orderedWordIds": data['orderedWordIds'],
+                "wordDisplays": data['wordDisplays'],
+                "numberOfWords": data['numberOfWords'],
                 "uniqueWordIds": data['uniqueWordIds'],
-                "numberOfWords": data['numberOfWords']
+                "createdOn": data['createdOn']
             })
             return jsonify({"response": "SUCCESS"})
 
@@ -44,7 +44,6 @@ class Documents(Resource):
         if document_id:
             mongo.db.documents.remove_one({"_id":document_id})
         else:
-            print('about to remove all documents')
             mongo.db.documents.remove({})
         return jsonify({"response":"SUCCESS"})
 
@@ -54,7 +53,6 @@ class Words(Resource):
         word_data = []
         cursor = None
         if word_ids:
-            print(word_ids)
             word_ids = word_ids.split(',')
             word_object_ids = []
             for word_id in word_ids:
@@ -71,15 +69,16 @@ class Words(Resource):
         words = request.get_json()
         if not words:
             abort(204, message="No Data")
-        word_ids = []
+        word_displays = []
         for word in words:
-            check_word = mongo.db.words.find_one({"text":word['text'],"language":word['language']})
+            word_text = word['text'].lower()
+            check_word = mongo.db.words.find_one({"text":word_text,"language":word['language']})
             if not check_word:
-                check_word = mongo.db.words.insert_one({"text":word['text'],"language":word['language'],"translation":word['translation'],"familiarity":1,"isPunctuation":word['isPunctuation']})
-                word_ids.append(str(check_word.inserted_id))
+                check_word = mongo.db.words.insert_one({"text":word_text,"language":word['language'],"translation":word['translation'],"familiarity":1,"isPunctuation":word['isPunctuation']})
+                word_displays.append({"wordId": str(check_word.inserted_id), "displayText": word['text']})
             else:
-                word_ids.append(str(check_word['_id']))
-        return jsonify(word_ids)
+                word_displays.append({"wordId": str(check_word['_id']), "displayText": word['text']})
+        return jsonify(word_displays)
 
     def delete(self):
         mongo.db.words.remove({})
