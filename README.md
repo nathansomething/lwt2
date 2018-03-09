@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3. This back-end is a flask server, depending on [Flask-Restful](https://flask-restful.readthedocs.io/en/latest/) and [Flask-PyMongo](https://flask-pymongo.readthedocs.io/en/latest/).
 
 ## Development server
-First, start the back-end server by running `python server/server.py`. The server was tested using Python 3.6.3. Run `ng serve` to run the Angular dev-server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First, start the back-end server by running `python server/server.py`. The server was tested using Python 3.6.3. Run `ng serve` to run the Angular dev-server. Navigate to `http://localhost:4200/user/0`. The app will automatically reload if you change any of the source files.
 
 ## Running unit tests
 
