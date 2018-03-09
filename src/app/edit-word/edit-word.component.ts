@@ -17,27 +17,20 @@ export class EditWordComponent implements OnInit, OnChanges, OnDestroy  {
   translation:string
 
   @Input() focusWord?:Word
+  oldFocusWord:Word
 
   constructor(private wordService:WordService, private route:ActivatedRoute) {
     this.keys = Object.keys(this.familiarity).filter(Number)
   }
 
-  ngOnInit() {
-    // If the focus word is not specified in the component input, look in the router
-    if (!this.focusWord) {
-        this.route.params.subscribe(params => {
-          if (params['word_id']) {
-            this.wordService.get(params['word_id']).subscribe(word => {
-              this.focusWord = word[0]
-            })
-          }
-        })
-    }
-  }
+  ngOnInit() { }
 
   ngOnChanges() {
     if (this.focusWord) {
-      this.wordService.update(this.focusWord).subscribe(res => res)
+      if (this.oldFocusWord) {
+        this.wordService.update(this.oldFocusWord).subscribe(res => res)
+      }
+      this.oldFocusWord = this.focusWord
     }
   }
 
@@ -45,10 +38,6 @@ export class EditWordComponent implements OnInit, OnChanges, OnDestroy  {
     if (this.focusWord) {
       this.wordService.update(this.focusWord).subscribe(res => res)
     }
-  }
-
-  getFamiliarity(familiarity:Familiarity) {
-    return Familiarity[familiarity]
   }
 
 }

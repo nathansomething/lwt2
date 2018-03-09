@@ -1,9 +1,14 @@
 div#word-box {
-  width: 15vw;
-  height: 30vh;
+  width: 25%;
+  min-width: 200px;
+  min-height: 250px;
   background-color: #9bf79b;
-  float: right;
   border: 1px solid #CCC;
+  float: right;
+
+  form {
+    padding: 5px;
+  }
 
   h3 {
     text-align: center;
@@ -14,7 +19,6 @@ div#word-box {
   }
 
   hr {
-    background-color: #fff;
-    border-top: 1px dashed #8c8b8b;
+    border: 1px solid #CCC;
   }
 }

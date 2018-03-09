@@ -16,6 +16,8 @@ export class ListWordsComponent implements OnInit {
   userId:Number
   words:Array<Word>
   familiarity = Familiarity
+  language = Language
+  focusWord:Word
 
   constructor(private route:ActivatedRoute, private router:Router, private wordService:WordService) {
     this.words = []
@@ -31,7 +33,7 @@ export class ListWordsComponent implements OnInit {
   }
 
   edit(word:Word) {
-    this.router.navigate([`/user/${this.userId}/words/${word.wordId}`]);
+    this.focusWord = word
   }
 
   deleteAll() {

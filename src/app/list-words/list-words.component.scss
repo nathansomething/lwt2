@@ -1,12 +1,12 @@
 div {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
+}
 
-  div {
-    height: 200px;
-    width: 350px;
-    border: 1px solid #CCC;
-  }
+edit-word {
+  position: fixed;
+  top: 30%;
+  right: 10%;
 }

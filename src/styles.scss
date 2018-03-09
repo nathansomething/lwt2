@@ -14,10 +14,13 @@ body {
   padding: 0;
   background-color: #EEE;
 
-  h2 {
-    font-family: 'Allan';
-    font-weight: normal;
-    font-size: 30px;
+  a {
+    color: #1cbe1c;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

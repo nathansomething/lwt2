@@ -1,4 +1,3 @@
-<h2>Upload New Document</h2>
 <form #documentForm="ngForm" (ngSubmit)="uploadDocument()" *ngIf="!submitted">
   <input type="text" name="title" placeholder="Document Title" required [(ngModel)]="title">
   <select name="language" required [(ngModel)]="documentLanguage">

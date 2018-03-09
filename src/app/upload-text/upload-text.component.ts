@@ -45,7 +45,7 @@ export class UploadTextComponent implements OnInit {
         continue
       }
       let finalCharacter = text.charAt(text.length - 1)
-      if (finalCharacter == '.' || finalCharacter == '?' || finalCharacter == '!') {
+      if (finalCharacter == '.' || finalCharacter == ',' || finalCharacter == '?' || finalCharacter == '!') {
         words.push(new Word(text.split(finalCharacter)[0],"",this.documentLanguage,false))
         words.push(new Word(finalCharacter,"",this.documentLanguage,true))
       }

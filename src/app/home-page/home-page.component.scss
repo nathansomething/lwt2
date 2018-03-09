@@ -1,0 +1,36 @@
+div {
+  margin: 10px 20%;
+  text-align: left;
+
+  p {
+    font-size: 18px;
+
+    &.unseen {
+      background-color: rgba(#49dbc1, 0.80);
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    &.unknown {
+      background-color: rgba(#e4dd30, 0.80);
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    &.practicing {
+      background-color: rgba(#37e237, 0.80);
+      padding: 3px;
+      border-radius: 5px;
+    }
+
+    &.recognize {
+      background-color: rgba(#f0e889, 0.8);
+      padding: 3px;
+      border-radius: 5px;
+    }
+  }
+
+  h3 {
+    font-size: 24px
+  }
+}

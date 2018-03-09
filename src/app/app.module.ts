@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
+import { Location } from '@angular/common'
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
@@ -23,7 +24,6 @@ const appRoutes: Routes = [
   { path: 'user/:user_id/study/:document_id', component: StudyTextComponent },
   { path: 'user/:user_id/documents', component: ListDocumentsComponent },
   { path: 'user/:user_id/words', component: ListWordsComponent },
-  { path: 'user/:user_id/words/:word_id', component: EditWordComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -45,7 +45,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     // HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
-  providers: [DocumentService, UserService, WordService],
+  providers: [DocumentService, UserService, WordService, Location],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
