@@ -14,7 +14,6 @@ nav {
 
     &#links {
       padding-top: 50px;
-      // padding-left: 15vw;
       width: 50%;
       margin: auto;
       display: flex;
@@ -37,7 +36,7 @@ nav {
       a {
         font-size: inherit;
         outline: none;
-
+        cursor: pointer;
       }
     }
 

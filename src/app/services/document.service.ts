@@ -9,9 +9,7 @@ export class DocumentService {
 
   private baseUrl:string = "http://localhost:5000/documents"
 
-  constructor(private http:HttpClient) {
-
-  }
+  constructor(private http:HttpClient) { }
 
   getAll():Observable<Document[]> {
     return this.http.get<Document[]>(this.baseUrl);
