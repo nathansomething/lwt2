@@ -40,7 +40,15 @@ export class StudyTextComponent implements OnInit {
 
   getWordClasses(wordId:string) {
     let word:Word = this.getWord(wordId)
-    return {'word':!word.isPunctuation,'punctuation':word.isPunctuation}
+    return {
+      'word': !word.isPunctuation,
+      'punctuation': word.isPunctuation,
+      'unseen': word.familiarity == Familiarity.Unseen,
+      'unknown': word.familiarity == Familiarity.Unkown,
+      'practicing': word.familiarity == Familiarity.Practicing,
+      'recognize': word.familiarity == Familiarity.Recognize,
+      'learned': word.familiarity == Familiarity.Learned
+    }
   }
 
   setWord(wordId:string) {

@@ -11,6 +11,24 @@ div#study-text {
 
   span.word {
     cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+
+    &.unseen {
+      background-color: rgba(#49dbc1, 0.80);
+    }
+
+    &.unknown {
+      background-color: rgba(#e4dd30, 0.80);
+    }
+
+    &.practicing {
+      background-color: rgba(#37e237, 0.80);
+    }
+
+    &.recognize {
+      background-color: rgba(#f0e889, 0.8);
+    }
   }
 
   span.punctuation {
