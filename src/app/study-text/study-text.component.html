@@ -1,5 +1,5 @@
 <ng-container *ngIf="activeDocument">
-  <h2>Studing Text <span class="bold">{{activeDocument.name}}</span></h2>
+  <h2>Studing Text <span class="italic">{{activeDocument.name}}</span></h2>
   <div id="study-text" *ngIf="activeDocument.wordDisplays.length">
     <ng-container *ngFor="let wordDisplay of activeDocument.wordDisplays">
       <span [ngClass]="getWordClasses(wordDisplay.wordId)" (click)="setWord(wordDisplay.wordId)">{{wordDisplay.displayText}}</span>

@@ -10,10 +10,21 @@ import { UserService } from './services/user.service';
 })
 export class AppComponent implements OnInit {
 
-  user:User;
+  user:User
+  selectNum:number
 
   constructor() {
     this.user = new User(0, "jshmoe", "Joe", "Shmoe")
+    this.selectNum = 1
+  }
+
+  select(num:number) {
+    console.log(num)
+    this.selectNum = num
+  }
+
+  isSelected(num:number):boolean {
+    return this.selectNum == num
   }
 
   ngOnInit() { }

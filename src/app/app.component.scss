@@ -1,21 +1,22 @@
 nav {
   background-color: #5757d9;
-  height: 15vh;
+  height: 150px;
   text-align: center;
   border-bottom: 1px solid #CCC;
 
   img {
-    width: 15vh;
-    height: 15vh;
+    width: 150px;
+    height: 150px;
     float: left;
   }
 
   div {
 
     &#links {
-      padding-top: 5vh;
-      padding-left: 15vw;
-      width: 50vw;
+      padding-top: 50px;
+      // padding-left: 15vw;
+      width: 50%;
+      margin: auto;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -36,13 +37,20 @@ nav {
       a {
         font-size: inherit;
         outline: none;
+
       }
     }
 
     a {
       text-decoration: none;
       color: #FFF;
-      font-size: 22px;
+      font-size: 30px;
+      outline: none;
+      font-family: 'Abel';
+
+      &.selected {
+        font-weight: bold;
+      }
     }
 
     a:hover {

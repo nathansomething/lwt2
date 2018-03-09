@@ -1,10 +1,10 @@
 <nav *ngIf="user">
   <img [src]="'./assets/lwt_icon_big.png'">
   <div id="links">
-    <a routerLink="user/{{user.id}}">Home</a>
-    <a routerLink="user/{{user.id}}/documents/">My Documents</a>
-    <a routerLink="user/{{user.id}}/words/">My Word List</a>
-    <a routerLink="user/{{user.id}}/upload/">Upload New Document</a>
+    <a routerLink="user/{{user.id}}" (click)="select(1)"  [class.selected]="isSelected(1)">Home</a>
+    <a routerLink="user/{{user.id}}/documents/" (click)="select(2)"  [class.selected]="isSelected(2)">My Documents</a>
+    <a routerLink="user/{{user.id}}/words/" (click)="select(3)" [class.selected]="isSelected(3)">My Word List</a>
+    <a routerLink="user/{{user.id}}/upload/" (click)="select(4)"  [class.selected]="isSelected(4)">Upload New Document</a>
   </div>
   <div id="user">
     <p>Welcome, {{user.username}}!</p>

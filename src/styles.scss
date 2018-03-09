@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Lato|Allan|Abel');
 
 html {
     margin: 0;
@@ -13,6 +13,12 @@ body {
   margin: 0;
   padding: 0;
   background-color: #EEE;
+
+  h2 {
+    font-family: 'Allan';
+    font-weight: normal;
+    font-size: 30px;
+  }
 }
 
 .bold {
@@ -53,4 +59,8 @@ table {
     padding: 15px;
     text-align: center;
   }
+}
+
+.italic {
+  font-style: italic;
 }
