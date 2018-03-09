@@ -1,3 +1,10 @@
-h2 {
-  text-align: center;
+div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
+  h2 {
+    text-align: center;
+  }
 }

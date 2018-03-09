@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WordInfoBoxComponent } from './word-info-box.component';
+import { EditWordComponent } from './edit-word.component';
 
 describe('WordInfoBoxComponent', () => {
-  let component: WordInfoBoxComponent;
-  let fixture: ComponentFixture<WordInfoBoxComponent>;
+  let component: EditWordComponent;
+  let fixture: ComponentFixture<EditWordComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WordInfoBoxComponent ]
+      declarations: [ EditWordComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WordInfoBoxComponent);
+    fixture = TestBed.createComponent(EditWordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -25,9 +25,13 @@ export class ListWordsComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.userId = +params.user_id
       this.wordService.getAll().subscribe(words => {
-        this.words = words
+        this.words = words.filter(word => !word.isPunctuation)
       })
     });
+  }
+
+  edit(word:Word) {
+    this.router.navigate([`/user/${this.userId}/words/${word.wordId}`]);
   }
 
   deleteAll() {

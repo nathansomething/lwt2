@@ -6,7 +6,7 @@
       <th>Translation</th>
       <th>Familiarity</th>
     </tr>
-    <tr *ngFor="let word of words">
+    <tr *ngFor="let word of words" (click)="edit(word)">
       <td>{{word.text}}</td>
       <td>{{word.translation}}</td>
       <td>{{familiarity[word.familiarity]}}</td>

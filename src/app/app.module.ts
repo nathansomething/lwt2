@@ -10,12 +10,12 @@ import { StudyTextComponent } from './study-text/study-text.component'
 import { UploadTextComponent } from './upload-text/upload-text.component'
 import { ListDocumentsComponent } from './list-documents/list-documents.component'
 import { ListWordsComponent } from './list-words/list-words.component'
+import { EditWordComponent } from './edit-word/edit-word.component'
 import { InMemoryDataService } from './in-memory-data.service'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'
 import { DocumentService } from './services/document.service'
 import { UserService } from './services/user.service'
 import { WordService } from './services/word.service';
-import { WordInfoBoxComponent } from './word-info-box/word-info-box.component'
 
 const appRoutes: Routes = [
   { path: 'user/:user_id', component: HomePageComponent },
@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'user/:user_id/study/:document_id', component: StudyTextComponent },
   { path: 'user/:user_id/documents', component: ListDocumentsComponent },
   { path: 'user/:user_id/words', component: ListWordsComponent },
+  { path: 'user/:user_id/words/:word_id', component: EditWordComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -35,7 +36,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     ListDocumentsComponent,
     ListWordsComponent,
-    WordInfoBoxComponent
+    EditWordComponent
   ],
   imports: [
     BrowserModule,

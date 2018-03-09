@@ -53,11 +53,14 @@ class Words(Resource):
         word_data = []
         cursor = None
         if word_ids:
-            word_ids = word_ids.split(',')
-            word_object_ids = []
-            for word_id in word_ids:
-                word_object_ids.append(ObjectId(word_id))
-            cursor = mongo.db.words.find({'_id': {'$in': word_object_ids}})
+            if not "," in word_ids:
+                cursor = mongo.db.words.find({'_id': ObjectId(word_ids)})
+            else:
+                word_ids = word_ids.split(',')
+                word_object_ids = []
+                for word_id in word_ids:
+                    word_object_ids.append(ObjectId(word_id))
+                cursor = mongo.db.words.find({'_id': {'$in': word_object_ids}})
         else:
             cursor = mongo.db.words.find({})
         for word in cursor:

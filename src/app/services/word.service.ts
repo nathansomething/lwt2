@@ -19,6 +19,10 @@ export class WordService {
     return this.http.get<Word[]>(`${this.baseUrl}/${wordIds}`)
   }
 
+  get(wordId:string):Observable<Word> {
+    return this.http.get<Word>(`${this.baseUrl}/${wordId}`)
+  }
+
   addWords(words:Array<Word>):Observable<WordDisplay[]> {
     return this.http.post<WordDisplay[]>(this.baseUrl, words)
   }

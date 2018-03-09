@@ -2,10 +2,9 @@
   <img [src]="'./assets/lwt_icon_big.png'">
   <div id="links">
     <a routerLink="user/{{user.id}}">Home</a>
-    <a routerLink="user/{{user.id}}/documents/">Active Texts</a>
-    <a routerLink="user/{{user.id}}/documents/">Archieved Texts</a>
-    <a routerLink="user/{{user.id}}/words/">Word List</a>
-    <a routerLink="user/{{user.id}}/upload/">Upload New Texts</a>
+    <a routerLink="user/{{user.id}}/documents/">My Documents</a>
+    <a routerLink="user/{{user.id}}/words/">My Word List</a>
+    <a routerLink="user/{{user.id}}/upload/">Upload New Document</a>
   </div>
   <div id="user">
     <p>Welcome, {{user.username}}!</p>
