@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router'
 import { AppComponent } from './app.component'
 import { HomePageComponent } from './home-page/home-page.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-import { StudyTextComponent } from './study-text/study-text.component'
-import { UploadTextComponent } from './upload-text/upload-text.component'
+import { StudyDocumentComponent } from './study-document/study-document.component'
+import { UploadDocumentComponent } from './upload-document/upload-document.component'
 import { ListDocumentsComponent } from './list-documents/list-documents.component'
 import { ListWordsComponent } from './list-words/list-words.component'
 import { EditWordComponent } from './edit-word/edit-word.component'
@@ -20,8 +20,8 @@ import { WordService } from './services/word.service';
 
 const appRoutes: Routes = [
   { path: 'user/:user_id', component: HomePageComponent },
-  { path: 'user/:user_id/upload', component: UploadTextComponent },
-  { path: 'user/:user_id/study/:document_id', component: StudyTextComponent },
+  { path: 'user/:user_id/upload', component: UploadDocumentComponent },
+  { path: 'user/:user_id/study/:document_id', component: StudyDocumentComponent },
   { path: 'user/:user_id/documents', component: ListDocumentsComponent },
   { path: 'user/:user_id/words', component: ListWordsComponent },
   { path: '**', component: PageNotFoundComponent }
@@ -31,8 +31,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     HomePageComponent,
-    UploadTextComponent,
-    StudyTextComponent,
+    UploadDocumentComponent,
+    StudyDocumentComponent,
     PageNotFoundComponent,
     ListDocumentsComponent,
     ListWordsComponent,

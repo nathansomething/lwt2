@@ -7,11 +7,11 @@ import WordDisplay from '../services/word-display'
 import Word from '../services/word'
 
 @Component({
-  selector: 'app-upload-text',
-  templateUrl: './upload-text.component.html',
-  styleUrls: ['./upload-text.component.scss']
+  selector: 'upload-document',
+  templateUrl: './upload-document.component.html',
+  styleUrls: ['./upload-document.component.scss']
 })
-export class UploadTextComponent implements OnInit {
+export class UploadDocumentComponent implements OnInit {
 
   title:string
   language = Language

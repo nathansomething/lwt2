@@ -7,11 +7,11 @@ import { DocumentService } from '../services/document.service'
 import { WordService } from '../services/word.service'
 
 @Component({
-  selector: 'app-study-text',
-  templateUrl: './study-text.component.html',
-  styleUrls: ['./study-text.component.scss']
+  selector: 'study-document',
+  templateUrl: './study-document.component.html',
+  styleUrls: ['./study-document.component.scss']
 })
-export class StudyTextComponent implements OnInit {
+export class StudyDocumentComponent implements OnInit {
 
   private activeDocument:Document
   private wordIdMap:Map<string,Word>
