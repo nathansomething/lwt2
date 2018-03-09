@@ -71,7 +71,7 @@ class Words(Resource):
             abort(204, message="No Data")
         word_displays = []
         for word in words:
-            word_text = word['text'].lower()
+            word_text = word['text'].capitalize()
             check_word = mongo.db.words.find_one({"text":word_text,"language":word['language']})
             if not check_word:
                 check_word = mongo.db.words.insert_one({"text":word_text,"language":word['language'],"translation":word['translation'],"familiarity":1,"isPunctuation":word['isPunctuation']})
@@ -79,6 +79,13 @@ class Words(Resource):
             else:
                 word_displays.append({"wordId": str(check_word['_id']), "displayText": word['text']})
         return jsonify(word_displays)
+
+    def put(self):
+        word_to_update = request.get_json()
+        if not word_to_update:
+            abort(204, message="No Data")
+        mongo.db.words.update({"_id": ObjectId(word_to_update['wordId'])}, {"text":word_to_update['text'],"language":word_to_update['language'],"translation":word_to_update['translation'],"familiarity":word_to_update['familiarity'],"isPunctuation":word_to_update['isPunctuation']})
+        return jsonify({"response":"SUCCSESS"})
 
     def delete(self):
         mongo.db.words.remove({})

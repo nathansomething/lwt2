@@ -1,10 +1,11 @@
 enum Familiarity {
   Unseen = 1,
+  Ignore,
   Unkown,
-  Recognize,
   Practicing,
+  Recognize,
   Learned,
-  Ignored
+
 }
 
 export default Familiarity;

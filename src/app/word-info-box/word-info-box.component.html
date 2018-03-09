@@ -1,13 +1,15 @@
 <div id="word-box">
   <h3>Word Info</h3>
-  <span *ngIf="localFocusWord">
-    <p>{{localFocusWord.text}}</p>
+  <form #wordForm="ngForm" *ngIf="focusWord">
+    <p>{{focusWord.text}}</p>
     <hr>
-    <p>{{getFamiliarity(localFocusWord.familiarity)}}</p>
+    <select name="familiarity" required [(ngModel)]="focusWord.familiarity">
+      <option *ngFor="let key of keys" [value]="key">{{familiarity[key]}}</option>
+    </select>
     <hr>
-    <p>{{localFocusWord.translation}}</p>
-  </span>
-  <span *ngIf="!localFocusWord">
+    <input name="translation" placeholder="Enter Translation" [(ngModel)]="focusWord.translation">
+  </form>
+  <span *ngIf="!focusWord">
     <p>Click on a word to get started</p>
   </span>
 </div>

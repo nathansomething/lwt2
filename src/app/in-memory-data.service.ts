@@ -13,8 +13,8 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 5, text: "another", language: Language.English, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
       { id: 6, text: "это", language: Language.Russian, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
       { id: 7, text: "тест", language: Language.Russian, familiarity: Familiarity.Unseen, definition: "Definition Goes Here"},
-      { id: 8, text: ".", language: Language.English, familiarity: Familiarity.Ignored, isPunctuation: true},
-      { id: 9, text: ",", language: Language.English, familiarity: Familiarity.Ignored, isPunctuation: true}
+      { id: 8, text: ".", language: Language.English, familiarity: Familiarity.Ignore, isPunctuation: true},
+      { id: 9, text: ",", language: Language.English, familiarity: Familiarity.Ignore, isPunctuation: true}
     ];
     const documents = [
       { document_id: 0, user_id: 0, name: "Test", createdOn: Date.now(), language: Language.English, words: [words[0],words[9],words[1],words[2],words[3],words[4],words[8] ] },

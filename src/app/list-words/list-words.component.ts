@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router'
 import { WordService } from '../services/word.service'
 import Word from '../services/word'
 import Language from '../enums/language.enum'
+import Familiarity from '../enums/familiarity.enum'
 
 @Component({
   selector: 'app-list-words',
@@ -14,6 +15,7 @@ export class ListWordsComponent implements OnInit {
 
   userId:Number
   words:Array<Word>
+  familiarity = Familiarity
 
   constructor(private route:ActivatedRoute, private router:Router, private wordService:WordService) {
     this.words = []

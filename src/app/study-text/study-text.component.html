@@ -5,5 +5,5 @@
       <span [ngClass]="getWordClasses(wordDisplay.wordId)" (click)="setWord(wordDisplay.wordId)">{{wordDisplay.displayText}}</span>
     </ng-container>
   </div>
-  <word-info-box [focusWord]="focusWord"></word-info-box>
+  <word-info-box [(focusWord)]="focusWord"></word-info-box>
 </ng-container>

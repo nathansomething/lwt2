@@ -20,10 +20,14 @@ export class WordService {
   }
 
   addWords(words:Array<Word>):Observable<WordDisplay[]> {
-    return this.http.post<WordDisplay[]>(this.baseUrl, words);
+    return this.http.post<WordDisplay[]>(this.baseUrl, words)
   }
 
-  deleteAll() {
+  update(word:Word):Observable<Object> {
+    return this.http.put(this.baseUrl, word)
+  }
+
+  deleteAll():Observable<Object> {
     return this.http.delete(this.baseUrl)
   }
 }

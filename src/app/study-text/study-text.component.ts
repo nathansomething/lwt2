@@ -45,7 +45,7 @@ export class StudyTextComponent implements OnInit {
 
   setWord(wordId:string) {
     let word:Word = this.getWord(wordId)
-    if (!word.isPunctuation && word.familiarity != Familiarity.Ignored) {
+    if (!word.isPunctuation && word.familiarity != Familiarity.Ignore) {
       this.focusWord = word
     }
   }
