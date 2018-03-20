@@ -8,10 +8,12 @@
     "start": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
   },
   "private": true,
   "dependencies": {
+    "@angular/cli": "1.6.8",
     "@agm/core": "^1.0.0-beta.2",
     "@angular/common": "^5.2.5",
     "@angular/compiler": "^5.2.5",
@@ -33,7 +35,6 @@
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.8",
     "@angular/compiler-cli": "^5.2.4",
     "@types/highcharts": "^5.0.16",
     "@types/jasmine": "2.8.6",

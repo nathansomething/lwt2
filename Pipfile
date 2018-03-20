@@ -10,4 +10,8 @@ name = "pypi"
 
 
 [packages]
+flask
+flask-restful
 
+[requires]
+python_version= "3.6.3"

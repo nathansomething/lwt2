@@ -9,5 +9,5 @@
 </form>
 <div *ngIf="submitted">
   <p>Document <span style="font-style: italic">{{title}}</span> has been successfully uploaded.</p>
-  <button (click)="submitted = false">Submit Another Document</button>
+  <button (click)="reset()">Submit Another Document</button>
 </div>

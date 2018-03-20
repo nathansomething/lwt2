@@ -99,6 +99,13 @@ export class UploadDocumentComponent implements OnInit {
     }
   }
 
+  reset() {
+    this.title = ""
+    this.language = null
+    this.documentText = ""
+    this.submitted = false
+  }
+
   delete():void {
     this.documentService.deleteAll()
   }
