@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 app.config["MONGO_DBNAME"] = "lwt2"
 mongo = PyMongo(app, config_prefix='MONGO')
-APP_URL = "http://127.0.0.1:5000"
+#APP_URL = "http://127.0.0.1:5000"
 
 class Documents(Resource):
 
